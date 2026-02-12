@@ -12,8 +12,24 @@ st.set_page_config(
     page_title="ML Classification Models",
     page_icon="📈",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
+
+st.markdown("""
+    <style>
+    .stButton > button {
+        background-color: rgb(255, 140, 66) !important;
+        color: white !important;
+        font-weight: bold !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 12px 24px !important;
+    }
+    .stButton > button:hover {
+        background-color: rgb(255, 120, 40) !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 st.title("ML Classification Models - Evaluation Dashboard")
 st.markdown("Professional Machine Learning Classification Pipeline")
@@ -66,28 +82,25 @@ except Exception as e:
     models_loaded = False
 
 if models_loaded:
-    col1, col2, col3, col4 = st.columns(4)
+    st.sidebar.title("Navigation")
+    st.sidebar.markdown("---")
     
-    with col1:
-        if st.button("Model Performance", use_container_width=True):
-            st.session_state.page = "performance"
+    if st.sidebar.button("Model Performance", use_container_width=True):
+        st.session_state.page = "performance"
     
-    with col2:
-        if st.button("Make Predictions", use_container_width=True):
-            st.session_state.page = "predictions"
+    if st.sidebar.button("Make Predictions", use_container_width=True):
+        st.session_state.page = "predictions"
     
-    with col3:
-        if st.button("Metrics Comparison", use_container_width=True):
-            st.session_state.page = "comparison"
+    if st.sidebar.button("Metrics Comparison", use_container_width=True):
+        st.session_state.page = "comparison"
     
-    with col4:
-        if st.button("About Dataset", use_container_width=True):
-            st.session_state.page = "dataset"
+    if st.sidebar.button("About Dataset", use_container_width=True):
+        st.session_state.page = "dataset"
+    
+    st.sidebar.markdown("---")
     
     if "page" not in st.session_state:
         st.session_state.page = "performance"
-    
-    st.markdown("---")
     
     if st.session_state.page == "performance":
         st.header("Model Performance Metrics")
@@ -154,7 +167,7 @@ if models_loaded:
                 feature_values.append(value)
         
         # Make predictions
-        if st.button("🔮 Predict", width='stretch'):
+        if st.button("Predict", use_container_width=True):
             X_input = np.array(feature_values).reshape(1, -1)
             X_scaled = scaler.transform(X_input)
             
