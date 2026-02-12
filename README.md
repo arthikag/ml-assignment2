@@ -38,20 +38,20 @@ For each model, the following metrics are calculated:
 ```
 ml-assignment2-classification/
 ├── model/
-│   ├── train_models.py              # Model training script
-│   ├── logistic_regression.pkl      # Trained model (auto-generated)
-│   ├── decision_tree.pkl            # Trained model (auto-generated)
-│   ├── k-nearest_neighbor.pkl       # Trained model (auto-generated)
-│   ├── naive_bayes.pkl              # Trained model (auto-generated)
-│   ├── random_forest.pkl            # Trained model (auto-generated)
-│   ├── xgboost.pkl                  # Trained model (auto-generated)
-│   ├── scaler.pkl                   # Feature scaler (auto-generated)
-│   ├── feature_names.pkl            # Feature names (auto-generated)
-│   └── results.csv                  # Model performance metrics (auto-generated)
-├── app.py                           # Streamlit web application
-├── requirements.txt                 # Python dependencies
-├── README.md                        # This file
-└── ML_Assignment2.txt               # Assignment specifications
+│   ├── train_models.py
+│   ├── logistic_regression.pkl
+│   ├── decision_tree.pkl
+│   ├── k-nearest_neighbor.pkl
+│   ├── naive_bayes.pkl
+│   ├── random_forest.pkl
+│   ├── xgboost.pkl
+│   ├── scaler.pkl
+│   ├── feature_names.pkl
+│   └── results.csv
+├── app.py
+├── requirements.txt
+├── README.md 
+└── ML_Assignment2.txt
 ```
 
 ## Installation & Setup
@@ -91,25 +91,25 @@ The application will open at `http://localhost:8501`
 
 ## Application Features
 
-### 📊 Model Performance Page
+### Model Performance Page
 - View all evaluation metrics in a table
 - Identify best-performing models for each metric
 - Visualize model performance across different metrics
 - Line charts and bar charts for easy comparison
 
-### 🎯 Make Predictions Page
+### Make Predictions Page
 - Interactive sliders for all 30 features
 - Real-time predictions from all 6 trained models
 - Confidence scores for each prediction
 - Compare predictions across different algorithms
 
-### 📈 Metrics Comparison Page
+### Metrics Comparison Page
 - Detailed comparison of specific metrics
 - Filter and sort by individual evaluation metrics
 - Statistical summary (best, worst, average)
 - Side-by-side model comparison
 
-### ℹ️ About Dataset Page
+### About Dataset Page
 - Comprehensive dataset information
 - Feature descriptions and categories
 - Dataset characteristics and use cases
@@ -169,17 +169,17 @@ All models are trained on the same preprocessed dataset with 80-20 train-test sp
 
 ## Key Features
 
-✅ **Complete Implementation** - All 6 models and 6 metrics as per assignment
+ **Complete Implementation** - All 6 models and 6 metrics as per assignment
 
-✅ **Interactive UI** - Streamlit-based user-friendly interface
+ **Interactive UI** - Streamlit-based user-friendly interface
 
-✅ **Real-time Predictions** - Test models with custom feature inputs
+ **Real-time Predictions** - Test models with custom feature inputs
 
-✅ **Metric Visualization** - Charts and comparisons for analysis
+ **Metric Visualization** - Charts and comparisons for analysis
 
-✅ **Reproducible** - Fixed random seeds for consistent results
+ **Reproducible** - Fixed random seeds for consistent results
 
-✅ **Deployment Ready** - Optimized for Streamlit Community Cloud
+ **Deployment Ready** - Optimized for Streamlit Community Cloud
 
 ## Author Notes
 
@@ -192,15 +192,15 @@ This project demonstrates:
 
 ## Assignment Requirements Compliance
 
-✅ Step 1: Choose classification dataset (Breast Cancer, 30 features, 569 instances)
+ Step 1: Choose classification dataset (Breast Cancer, 30 features, 569 instances)
 
-✅ Step 2: Implement 6 classification models with all required evaluation metrics
+ Step 2: Implement 6 classification models with all required evaluation metrics
 
-✅ Step 3: Interactive Streamlit application with model visualization
+ Step 3: Interactive Streamlit application with model visualization
 
-✅ Step 4: Deployment-ready code for Streamlit Community Cloud
+ Step 4: Deployment-ready code for Streamlit Community Cloud
 
-✅ Step 5: Comprehensive documentation (this README)
+ Step 5: Comprehensive documentation (this README)
 
 ## License
 
