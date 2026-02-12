@@ -134,9 +134,9 @@ All models are trained on the same preprocessed dataset with 80-20 train-test sp
 
 ### Streamlit Community Cloud Deployment
 1. Push the repository to GitHub
-2. Sign up at https://share.streamlit.io
+2. Sign up at streamlit
 3. Deploy by connecting your GitHub repository
-4. Access your live app via the provided Streamlit Community Cloud URL
+4. Access your live app via the provided Streamlit Community Cloud URL at https://2025ab05180-ml-assignment2.streamlit.app/
 
 **Requirements for deployment:**
 - requirements.txt with all dependencies
@@ -189,26 +189,3 @@ This project demonstrates:
 - Comprehensive model evaluation framework
 - Interactive data science application design
 - Enterprise-grade code organization
-
-## Assignment Requirements Compliance
-
- Step 1: Choose classification dataset (Breast Cancer, 30 features, 569 instances)
-
- Step 2: Implement 6 classification models with all required evaluation metrics
-
- Step 3: Interactive Streamlit application with model visualization
-
- Step 4: Deployment-ready code for Streamlit Community Cloud
-
- Step 5: Comprehensive documentation (this README)
-
-## License
-
-This project is created for educational purposes as part of ML Assignment 2 at BITS Pilani.
-
-## Support
-
-For issues or questions:
-- Review the assignment specification in ML_Assignment2.txt
-- Check Streamlit documentation: https://docs.streamlit.io
-- Check Scikit-learn documentation: https://scikit-learn.org
