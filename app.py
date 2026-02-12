@@ -4,17 +4,18 @@ import numpy as np
 import pickle
 import os
 from pathlib import Path
+import plotly.graph_objects as go
+import plotly.express as px
+from sklearn.preprocessing import StandardScaler
 
-# Set page config
 st.set_page_config(
     page_title="ML Classification Models",
-    page_icon="🤖",
+    page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Title and Description
-st.title("🤖 ML Classification Models Demo")
+st.title("ML Classification Models - Evaluation Dashboard")
 st.markdown("""
 This interactive application demonstrates 6 different machine learning classification models
 trained on the **Breast Cancer Dataset** with 30 features and 569 instances.
