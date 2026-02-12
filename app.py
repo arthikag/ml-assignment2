@@ -12,22 +12,11 @@ st.set_page_config(
     page_title="ML Classification Models",
     page_icon="📈",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 st.title("ML Classification Models - Evaluation Dashboard")
-st.markdown("""
-This interactive application demonstrates 6 different machine learning classification models
-trained on the **Breast Cancer Dataset** with 30 features and 569 instances.
-
-**Models Implemented:**
-1. Logistic Regression
-2. Decision Tree Classifier
-3. K-Nearest Neighbor Classifier
-4. Naive Bayes Classifier (Gaussian)
-5. Random Forest Ensemble
-6. XGBoost Gradient Boosting
-""")
+st.markdown("Professional Machine Learning Classification Pipeline")
 
 # Get model directory
 model_dir = Path(__file__).parent / "model"
@@ -77,17 +66,30 @@ except Exception as e:
     models_loaded = False
 
 if models_loaded:
-    # Sidebar Navigation
-    st.sidebar.header("Navigation")
-    page = st.sidebar.radio("Select Page:", [
-        "📊 Model Performance",
-        "🎯 Make Predictions",
-        "📈 Metrics Comparison",
-        "ℹ️ About Dataset"
-    ])
+    col1, col2, col3, col4 = st.columns(4)
     
-    # ========== PAGE 1: Model Performance ==========
-    if page == "📊 Model Performance":
+    with col1:
+        if st.button("Model Performance", use_container_width=True):
+            st.session_state.page = "performance"
+    
+    with col2:
+        if st.button("Make Predictions", use_container_width=True):
+            st.session_state.page = "predictions"
+    
+    with col3:
+        if st.button("Metrics Comparison", use_container_width=True):
+            st.session_state.page = "comparison"
+    
+    with col4:
+        if st.button("About Dataset", use_container_width=True):
+            st.session_state.page = "dataset"
+    
+    if "page" not in st.session_state:
+        st.session_state.page = "performance"
+    
+    st.markdown("---")
+    
+    if st.session_state.page == "performance":
         st.header("Model Performance Metrics")
         st.markdown("---")
         
@@ -127,8 +129,7 @@ if models_loaded:
             st.bar_chart(results_df['MCC Score'])
             st.caption("MCC Score by Model")
     
-    # ========== PAGE 2: Make Predictions ==========
-    elif page == "🎯 Make Predictions":
+    elif st.session_state.page == "predictions":
         st.header("Make Predictions with Trained Models")
         st.markdown("---")
         
@@ -182,8 +183,7 @@ if models_loaded:
                     confidence = pred_data['Confidence (Class 1)']
                     st.write(f"Confidence: {confidence:.4f}")
     
-    # ========== PAGE 3: Metrics Comparison ==========
-    elif page == "📈 Metrics Comparison":
+    elif st.session_state.page == "comparison":
         st.header("Detailed Metrics Comparison")
         st.markdown("---")
         
@@ -211,8 +211,7 @@ if models_loaded:
         st.subheader(f"All Models - {selected_metric}")
         st.dataframe(results_df[[selected_metric]].round(4), width='stretch')
     
-    # ========== PAGE 4: About Dataset ==========
-    elif page == "ℹ️ About Dataset":
+    elif st.session_state.page == "dataset":
         st.header("About the Dataset")
         st.markdown("---")
         
