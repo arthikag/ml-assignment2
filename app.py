@@ -377,21 +377,15 @@ if models_loaded:
         )
         
         if selected_metrics:
-            col1, col2 = st.columns([2, 1])
-            
-            with col1:
-                fig = px.bar(results_df[selected_metrics], title='Selected Metrics Comparison', height=450)
+            for metric in selected_metrics:
+                fig = px.bar(results_df[[metric]], title=f'{metric} by Model', height=350, color=metric)
                 fig.update_layout(margin=dict(l=0, r=0, t=30, b=0))
                 fig.update_yaxes(autorange=True)
                 st.plotly_chart(fig, use_container_width=True)
-            
-            with col2:
-                for metric in selected_metrics:
-                    st.metric(f"Best {metric[:12]}", 
-                             f"{results_df[metric].max():.4f}",
-                             f"{results_df[metric].idxmax()}")
-                    st.metric(f"Avg {metric[:12]}", 
-                             f"{results_df[metric].mean():.4f}")
+                
+                st.metric(f"Best {metric}", 
+                         f"{results_df[metric].max():.4f}",
+                         f"{results_df[metric].idxmax()}")
             
             st.markdown("---")
             st.subheader("All Models - Selected Metrics")
@@ -449,8 +443,9 @@ if models_loaded:
         if "default_uploaded" not in st.session_state:
             st.session_state.default_uploaded = True
             st.session_state.default_df = sample_test_df
-            st.session_state.default_model = random.choice(list(models.keys())) if models else None
-        
+            # Note: do NOT set a random default model here; the selected model in the dropdown
+            # should always control which model is used for predictions.
+
         uploaded_file = st.file_uploader(
             "Upload CSV file (first 30 columns should be features):",
             type=['csv'],
@@ -466,9 +461,10 @@ if models_loaded:
             processing_model = upload_model
         elif st.session_state.default_uploaded:
             processing_df = st.session_state.default_df
-            processing_model = st.session_state.default_model
+            # Use the model selected in the dropdown even when using the default sample data
+            processing_model = upload_model
             st.info(f"📊 Using default sample data with **{processing_model}** model (upload your own file to replace)")
-        
+
         if processing_df is not None and processing_model is not None:
             try:
                 uploaded_df = processing_df
@@ -510,53 +506,45 @@ if models_loaded:
                     results_upload['Actual'] = ['Malignant (1)' if p == 1 else 'Benign (0)' for p in y_upload]
                     results_upload['Correct'] = predictions == y_upload
                 
-                display_styled_dataframe(results_upload, f"Predictions using {upload_model}")
-                
+                display_styled_dataframe(results_upload, f"Predictions using {processing_model}")
+
                 # Metrics if target is available
                 if y_upload is not None:
                     st.markdown("---")
                     st.subheader("Evaluation Metrics")
-                    
+
                     from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-                    
+
                     accuracy = accuracy_score(y_upload, predictions)
                     precision = precision_score(y_upload, predictions, zero_division=0)
                     recall = recall_score(y_upload, predictions, zero_division=0)
                     f1 = f1_score(y_upload, predictions, zero_division=0)
-                    
+
                     col1, col2, col3, col4 = st.columns(4)
                     col1.metric("Accuracy", f"{accuracy:.4f}")
                     col2.metric("Precision", f"{precision:.4f}")
                     col3.metric("Recall", f"{recall:.4f}")
                     col4.metric("F1 Score", f"{f1:.4f}")
-                    
+
                     st.markdown("---")
                     st.subheader("Confusion Matrix")
-                    
+
                     cm = confusion_matrix(y_upload, predictions)
-                    
-                    # Create confusion matrix dataframe
-                    cm_df = pd.DataFrame(
-                        cm,
-                        index=['Actual Benign', 'Actual Malignant'],
-                        columns=['Predicted Benign', 'Predicted Malignant']
-                    )
-                    
-                    display_styled_dataframe(cm_df, "Confusion Matrix")
-                    
-                    # Confusion matrix visualization
-                    fig, ax = plt.subplots(figsize=(6, 4.5))
-                    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Benign', 'Malignant'])
-                    disp.plot(ax=ax, cmap='Blues')
-                    plt.title(f"Confusion Matrix - {processing_model}", fontsize=12, fontweight='bold', color='#FF8C42')
-                    plt.tight_layout()
-                    st.pyplot(fig)
-                    
+
+                    col_left, col_center, col_right = st.columns([1, 2, 1])
+                    with col_center:
+                        fig, ax = plt.subplots(figsize=(5, 4))
+                        disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['Benign', 'Malignant'])
+                        disp.plot(ax=ax, cmap='Blues')
+                        plt.title(f"Confusion Matrix - {processing_model}", fontsize=11, fontweight='bold', color='#FF8C42')
+                        plt.tight_layout()
+                        st.pyplot(fig)
+
                     st.markdown("---")
-                    
+
                     report = classification_report(y_upload, predictions, target_names=['Benign', 'Malignant'], output_dict=True)
                     report_df = pd.DataFrame(report).transpose()
-                    
+
                     display_styled_dataframe(report_df.round(4), "Classification Report")
                 
                 # Download predictions
@@ -573,7 +561,7 @@ if models_loaded:
                 st.error(f"Error processing file: {str(e)}")
         
         add_footer()
-    
+
     elif st.session_state.page == "dataset":
         st.header("About the Dataset")
         st.markdown("---")
