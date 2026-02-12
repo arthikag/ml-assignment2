@@ -28,6 +28,18 @@ st.markdown("""
         font-family: 'Poppins', 'Inter', sans-serif !important;
     }
     
+    [data-testid="stAppViewContainer"] {
+        background-color: #FFFEF5 !important;
+    }
+    
+    [data-testid="stHeader"] {
+        background-color: #FFFEF5 !important;
+    }
+    
+    section[data-testid="stSidebar"] {
+        background-color: #FFE4C4 !important;
+    }
+    
     h1 {
         font-family: 'Poppins', sans-serif !important;
         font-weight: 700 !important;
@@ -92,7 +104,7 @@ st.markdown("""
     
     .styled-table thead tr {
         background-color: rgb(255, 140, 66);
-        color: white;
+        color: #2C3E50 !important;
         font-weight: 600;
         text-align: center;
     }
@@ -101,25 +113,254 @@ st.markdown("""
         padding: 12px;
         border: 1px solid rgba(255, 140, 66, 0.8);
         font-weight: 600;
+        color: #2C3E50 !important;
+        background-color: rgb(255, 140, 66) !important;
+    }
+    
+    .styled-table thead>tr>th {
+        color: #2C3E50 !important;
     }
     
     .styled-table tbody tr {
         background-color: #FFFEF5;
+        color: #2C3E50 !important;
     }
     
     .styled-table tbody tr:nth-child(even) {
         background-color: #FFE4C4;
-    }
-    
-    .styled-table tbody tr:hover {
-        background-color: rgba(255, 140, 66, 0.15);
+        color: #2C3E50 !important;
     }
     
     .styled-table tbody td {
         padding: 10px;
         border: 1px solid rgba(255, 140, 66, 0.3);
         text-align: center;
-        color: #2C3E50;
+        color: #2C3E50 !important;
+    }
+    
+    /* Markdown Container */
+    .stMarkdownContainer div {
+        color: #2C3E50 !important;
+    }
+    
+    .stMarkdownContainer {
+        color: #2C3E50 !important;
+    }
+    
+    /* Table Body Elements */
+    tbody {
+        color: #2C3E50 !important;
+    }
+    
+    tbody tr {
+        color: #2C3E50 !important;
+    }
+    
+    tbody tr th {
+        color: #2C3E50 !important;
+    }
+    
+    tbody td {
+        color: #2C3E50 !important;
+    }
+    
+    /* Input Elements */
+    input, select, textarea {
+        background-color: #FFFEF5 !important;
+        color: #2C3E50 !important;
+        border: 2px solid rgb(255, 140, 66) !important;
+        border-radius: 6px !important;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+        background-color: #FFFEF5 !important;
+        border-color: rgb(255, 120, 40) !important;
+        box-shadow: 0 0 8px rgba(255, 140, 66, 0.3) !important;
+    }
+    
+    /* Selectbox Dropdown */
+    .stSelectbox > div > div {
+        background-color: #FFFEF5 !important;
+        color: #2C3E50 !important;
+    }
+    
+    .stSelectbox [data-baseweb="select"] {
+        background-color: #FFFEF5 !important;
+    }
+    
+    /* Multiselect/Chipsets */
+    .stMultiSelect [data-baseweb="tag-input"] {
+        background-color: #FFFEF5 !important;
+        color: #2C3E50 !important;
+    }
+    
+    .stMultiSelect {
+        background-color: #FFFEF5 !important;
+    }
+    
+    .stMultiSelect > div {
+        background-color: #FFFEF5 !important;
+    }
+    
+    .stMultiSelect [data-baseweb="tag"] {
+        background-color: rgb(255, 140, 66) !important;
+        color: white !important;
+    }
+    
+    .stMultiSelect label {
+        color: #2C3E50 !important;
+    }
+    
+    .stMultiSelect [data-baseweb="input"] {
+        background-color: #FFFEF5 !important;
+        color: #2C3E50 !important;
+    }
+    
+    /* Selectbox Virtual Dropdown */
+    .stSelectbox {
+        background-color: transparent !important;
+    }
+    
+    .stSelectboxVirtualDropdown {
+        background-color: #FFFEF5 !important;
+        color: #2C3E50 !important;
+    }
+    
+    .stSelectbox [role="listbox"] {
+        background-color: #FFFEF5 !important;
+    }
+    
+    .stSelectbox [role="option"] {
+        background-color: #FFFEF5 !important;
+        color: #2C3E50 !important;
+    }
+    
+    .stSelectbox [role="option"][aria-selected="true"] {
+        background-color: rgb(255, 140, 66) !important;
+        color: white !important;
+    }
+    
+    /* Radio Buttons */
+    .stRadio > label {
+        background-color: transparent !important;
+    }
+    
+    .stRadio [data-testid="stRadioButton"] {
+        background-color: #FFFEF5 !important;
+    }
+    
+    /* Checkboxes */
+    .stCheckbox [data-testid="stCheckbox"] {
+        background-color: #FFFEF5 !important;
+    }
+    
+    /* Text Input */
+    .stTextInput > div > div {
+        background-color: #FFFEF5 !important;
+    }
+    
+    .stTextInput input {
+        background-color: #FFFEF5 !important;
+        color: #2C3E50 !important;
+    }
+    
+    /* Text Area */
+    .stTextArea > div > div {
+        background-color: #FFFEF5 !important;
+    }
+    
+    .stTextArea textarea {
+        background-color: #FFFEF5 !important;
+        color: #2C3E50 !important;
+    }
+    
+    /* Slider */
+    .stSlider > label {
+        color: #2C3E50 !important;
+    }
+    
+    [data-testid="stSlider"] {
+        background-color: transparent !important;
+    }
+    
+    /* Number Input */
+    .stNumberInput > div > div {
+        background-color: #FFFEF5 !important;
+    }
+    
+    /* File Uploader */
+    .stFileUploader > div {
+        background-color: #FFE4C4 !important;
+        border: 2px dashed rgb(255, 140, 66) !important;
+    }
+    
+    .stFileUploader {
+        background-color: #FFFEF5 !important;
+    }
+    
+    .stFileUploaderDropzone {
+        background-color: #FFFEF5 !important;
+        border: 2px dashed rgb(255, 140, 66) !important;
+        color: #2C3E50 !important;
+    }
+    
+    .stFileUploaderDropzone > div {
+        background-color: #FFFEF5 !important;
+    }
+    
+    .stFileUploaderDropzone svg {
+        fill: rgb(255, 140, 66) !important;
+    }
+    
+    .stFileUploaderDropzoneInstructions {
+        color: #2C3E50 !important;
+    }
+    
+    .stFileUploader label {
+        color: #2C3E50 !important;
+    }
+    
+    /* Plotly Charts */
+    .plotly-graph-div {
+        background-color: #FFFEF5 !important;
+    }
+    
+    /* Info/Success/Warning/Error Boxes */
+    .streamlit-expanderHeader {
+        background-color: #FFE4C4 !important;
+    }
+    
+    .stAlert {
+        background-color: #FFFEF5 !important;
+    }
+    
+    /* Tabs */
+    [data-testid="stTabs"] {
+        background-color: transparent !important;
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background-color: rgb(255, 140, 66) !important;
+        color: white !important;
+    }
+    
+    /* Element Container */
+    .stElementContainer {
+        background-color: #FFFEF5 !important;
+    }
+    
+    [data-testid="stElementContainer"] {
+        background-color: #FFFEF5 !important;
+    }
+    
+    /* Download Button */
+    .stDownloadButton > button {
+        background-color: rgb(255, 140, 66) !important;
+        color: white !important;
+    }
+    
+    .stDownloadButton > button:hover {
+        background-color: rgb(255, 120, 40) !important;
     }
     </style>
 """, unsafe_allow_html=True)
