@@ -189,3 +189,6 @@ This project demonstrates:
 - Comprehensive model evaluation framework
 - Interactive data science application design
 - Enterprise-grade code organization
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/8bc47be4-a6e9-4b0e-af24-380c65311b7f" />
+<img width="1916" height="1079" alt="image" src="https://github.com/user-attachments/assets/e76fdfd8-af1e-4e82-a341-fc8dcf635dfc" />
+
