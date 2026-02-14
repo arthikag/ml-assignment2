@@ -817,48 +817,54 @@ if models_loaded:
             st.subheader("Dataset Information")
             st.markdown(
                 """
-                <div style='color: black;'>
-                <strong>Dataset Name:</strong> Breast Cancer Wisconsin (Diagnostic)
-                <br><br>
-                <strong>Source:</strong> <a href='https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic' target='_blank'>UCI Machine Learning Repository</a>
-                <br><br>
-                <strong>Original Paper:</strong> <a href='https://pubmed.ncbi.nlm.nih.gov/9144026/' target='_blank'>Wolberg et al., 1995</a>
-                <br><br>
-                <strong>Number of Instances:</strong> 569
-                <br><br>
-                <strong>Number of Features:</strong> 30
-                <br><br>
-                <strong>Classes:</strong> 2 (Binary Classification)
+                <div style="color: black;">
+                <b>Dataset Name:</b> Breast Cancer Wisconsin (Diagnostic)<br><br>
+
+                <b>Source:</b> 
+                <a href="https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic" target="_blank" style="color:black;">
+                UCI Machine Learning Repository
+                </a><br><br>
+
+                <b>Original Paper:</b> 
+                <a href="https://pubmed.ncbi.nlm.nih.gov/9144026/" target="_blank" style="color:black;">
+                Wolberg et al., 1995
+                </a><br><br>
+
+                <b>Number of Instances:</b> 569<br><br>
+                <b>Number of Features:</b> 30<br><br>
+
+                <b>Classes:</b> 2 (Binary Classification)
                 <ul>
                     <li>Benign (0)</li>
                     <li>Malignant (1)</li>
                 </ul>
-                <br>
-                <strong>Feature Types:</strong> Numeric (computed from digitized images)
+
+                <b>Feature Types:</b> Numeric (computed from digitized images)
                 </div>
                 """,
-                unsafe_allow_html=True,
+                unsafe_allow_html=True
             )
 
-         with col2:
-             st.subheader("Feature Categories")
-             st.markdown(
+        with col2:
+            st.subheader("Feature Categories")
+            st.markdown(
                 """
-                <div style='color: black;'>
+                <div style="color: black;">
                 Features are computed for each cell nucleus:
                 <ol>
-                <li><strong>Radius</strong> - mean distance from center to perimeter</li>
-                <li><strong>Texture</strong> - standard deviation of gray-scale values</li>
-                <li><strong>Perimeter</strong> - size of the core tumor</li>
-                <li><strong>Area</strong> - size of the core tumor</li>
-                <li><strong>Smoothness</strong> - local variation in radius lengths</li>
-                <li><strong>Compactness</strong> - perimeter² / area - 1.0</li>
-                <li><strong>Concavity</strong> - severity of concave portions</li>
-                <li><strong>Concave Points</strong> - number of concave portions</li>
-                <li><strong>Symmetry</strong> - symmetry of the nucleus</li>
-                <li><strong>Fractal Dimension</strong> - coastline approximation</li>
+                    <li><b>Radius</b> – mean distance from center to perimeter</li>
+                    <li><b>Texture</b> – standard deviation of gray-scale values</li>
+                    <li><b>Perimeter</b> – size of the core tumor</li>
+                    <li><b>Area</b> – size of the core tumor</li>
+                    <li><b>Smoothness</b> – local variation in radius lengths</li>
+                    <li><b>Compactness</b> – perimeter² / area − 1.0</li>
+                    <li><b>Concavity</b> – severity of concave portions</li>
+                    <li><b>Concave Points</b> – number of concave portions</li>
+                    <li><b>Symmetry</b> – symmetry of the nucleus</li>
+                    <li><b>Fractal Dimension</b> – coastline approximation</li>
                 </ol>
-                <p><em>For each feature, the dataset provides:</em></p>
+
+                <i>For each feature, the dataset provides:</i>
                 <ul>
                     <li>Mean</li>
                     <li>Standard Error</li>
@@ -866,23 +872,30 @@ if models_loaded:
                 </ul>
                 </div>
                 """,
-                unsafe_allow_html=True,
+                unsafe_allow_html=True
             )
 
-         st.markdown("---")
-         st.subheader("Class Distribution")
+        st.markdown("<hr style='border:1px solid black;'>", unsafe_allow_html=True)
 
-         st.info("""
-         This is a standard benchmark dataset used for:
-         - Binary classification (Cancer vs. Normal)
-         - Evaluating classification algorithms
-         - Model comparison and selection
+        st.subheader("Class Distribution")
+        st.markdown(
+            """
+            <div style="color: black;">
+            This is a standard benchmark dataset used for:
+            <ul>
+                <li>Binary classification (Cancer vs. Normal)</li>
+                <li>Evaluating classification algorithms</li>
+                <li>Model comparison and selection</li>
+            </ul>
 
-         The dataset is well-balanced and suitable for demonstrating
-         various ML classification techniques.
-         """)
+            The dataset is well-balanced and suitable for demonstrating
+            various ML classification techniques.
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
-         add_footer()
+        add_footer()
 
 else:
     st.error("Models not loaded. Please ensure the model files are trained and saved.")
