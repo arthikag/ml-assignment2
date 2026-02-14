@@ -815,60 +815,74 @@ if models_loaded:
         
         with col1:
             st.subheader("Dataset Information")
-            st.markdown("""
-            **Dataset Name:** Breast Cancer Wisconsin (Diagnostic)
-            
-            **Source:** [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic)
-            
-            **Original Paper:** [Wolberg et al., 1995](https://pubmed.ncbi.nlm.nih.gov/9144026/)
-            
-            **Number of Instances:** 569
-            
-            **Number of Features:** 30
-            
-            **Classes:** 2 (Binary Classification)
-            - Benign (0)
-            - Malignant (1)
-            
-            **Feature Types:** Numeric (computed from digitized images)
-            """)
-        
-        with col2:
-            st.subheader("Feature Categories")
-            st.markdown("""
-            Features are computed for each cell nucleus:
-            
-            1. **Radius** - mean distance from center to perimeter
-            2. **Texture** - standard deviation of gray-scale values
-            3. **Perimeter** - size of the core tumor
-            4. **Area** - size of the core tumor
-            5. **Smoothness** - local variation in radius lengths
-            6. **Compactness** - perimeter² / area - 1.0
-            7. **Concavity** - severity of concave portions
-            8. **Concave Points** - number of concave portions
-            9. **Symmetry** - symmetry of the nucleus
-            10. **Fractal Dimension** - coastline approximation
-            
-            *For each feature, the dataset provides:*
-            - Mean
-            - Standard Error
-            - Worst (largest)
-            """)
-        
-        st.markdown("---")
-        st.subheader("Class Distribution")
-        
-        st.info("""
-        This is a standard benchmark dataset used for:
-        - Binary classification (Cancer vs. Normal)
-        - Evaluating classification algorithms
-        - Model comparison and selection
-        
-        The dataset is well-balanced and suitable for demonstrating
-        various ML classification techniques.
-        """)
-        
-        add_footer()
+            st.markdown(
+                """
+                <div style='color: black;'>
+                <strong>Dataset Name:</strong> Breast Cancer Wisconsin (Diagnostic)
+                <br><br>
+                <strong>Source:</strong> <a href='https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic' target='_blank'>UCI Machine Learning Repository</a>
+                <br><br>
+                <strong>Original Paper:</strong> <a href='https://pubmed.ncbi.nlm.nih.gov/9144026/' target='_blank'>Wolberg et al., 1995</a>
+                <br><br>
+                <strong>Number of Instances:</strong> 569
+                <br><br>
+                <strong>Number of Features:</strong> 30
+                <br><br>
+                <strong>Classes:</strong> 2 (Binary Classification)
+                <ul>
+                    <li>Benign (0)</li>
+                    <li>Malignant (1)</li>
+                </ul>
+                <br>
+                <strong>Feature Types:</strong> Numeric (computed from digitized images)
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+         with col2:
+             st.subheader("Feature Categories")
+             st.markdown(
+                """
+                <div style='color: black;'>
+                Features are computed for each cell nucleus:
+                <ol>
+                <li><strong>Radius</strong> - mean distance from center to perimeter</li>
+                <li><strong>Texture</strong> - standard deviation of gray-scale values</li>
+                <li><strong>Perimeter</strong> - size of the core tumor</li>
+                <li><strong>Area</strong> - size of the core tumor</li>
+                <li><strong>Smoothness</strong> - local variation in radius lengths</li>
+                <li><strong>Compactness</strong> - perimeter² / area - 1.0</li>
+                <li><strong>Concavity</strong> - severity of concave portions</li>
+                <li><strong>Concave Points</strong> - number of concave portions</li>
+                <li><strong>Symmetry</strong> - symmetry of the nucleus</li>
+                <li><strong>Fractal Dimension</strong> - coastline approximation</li>
+                </ol>
+                <p><em>For each feature, the dataset provides:</em></p>
+                <ul>
+                    <li>Mean</li>
+                    <li>Standard Error</li>
+                    <li>Worst (largest)</li>
+                </ul>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+         st.markdown("---")
+         st.subheader("Class Distribution")
+
+         st.info("""
+         This is a standard benchmark dataset used for:
+         - Binary classification (Cancer vs. Normal)
+         - Evaluating classification algorithms
+         - Model comparison and selection
+
+         The dataset is well-balanced and suitable for demonstrating
+         various ML classification techniques.
+         """)
+
+         add_footer()
 
 else:
     st.error("Models not loaded. Please ensure the model files are trained and saved.")
